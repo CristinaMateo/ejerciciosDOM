@@ -1,70 +1,39 @@
-/***1 -** Hacer un boton que esconda/enseñe el texto de un parrafo cada vez que se pulsa el mismo boton. Por defecto, el párrafo debe estar visible
- * hacer un botón normal
- * hacer un párrafo 
- * usar click
- * toggle/dos acciones para aparecer y desaparecer
- * 
- * 
- * 
+/*Ejercicio 1:
 
-**2 -** Hacer que con onmouseover y onmouseout, se muestre/esconda el título de una foto cuando pases el raton sobre dicha foto
+Añadir dos elementos `<li>` a un `<ul>` (Desde JS), y unirlos al DOM de tu página HTML
+    Métodos recomendados:
+    - innerHTML
+    - appendChild()
+    - createElement()
+    - createAttribute()
+    - createTextNode()
 
-**3 -** Añadir dos elementos `<li>` a un `<ul>`, y unirlos al DOM de tu página HTML
-	Usar:
-	- innerHTML
-	- appendChild()
-	- createElement()
-	- createAttribute()
-    	- createTextNode()
-*/
-
-//1
-function mostrar() {
-
-    if (document.getElementById("textParagraph").innerHTML ==""){
-      document.getElementById("textParagraph").innerHTML = "Este es un párrafo que se esconderá y mostrará al pulsar el botón.";
-    }
-    else{ // Fecha pintada previamente
-      document.getElementById("textParagraph").innerHTML = "";
-    }
-  }
-  
-  document.getElementById("toggleButton").addEventListener("click", mostrar);
-
-  //2
-
-  function siTitulo() {
-    document.getElementById("titulo").innerHTML = "Título de imagen";
-  }
+Ejercicio 1 bis:
+Nota (ejercicio avanzado): pensar el caso de añadir datos de un array de tareas de tamaño indeterminado (los datos ya están dentro del array)
+["comprar","barrer","alimentar gato","colada"]*/
 
 
-  function noTitulo() {
-    document.getElementById("titulo").innerHTML ="";
-	
-  }
-  document.querySelector("#michi").addEventListener("mouseout", noTitulo);
-  
-  document.querySelector("#michi").addEventListener("mouseover", siTitulo);
+
+let lista = document.getElementById("lista")
+let opcion1 = lista.appendChild(document.createElement("li"))
+let elemento1 = opcion1.appendChild(document.createTextNode("gato"))
+
+let opcion2 = lista.appendChild(document.createElement("li"))
+let elemento2 = opcion2.appendChild(document.createTextNode("perro"))
 
 
-  //3
+/Ejercicio 1 bis:
+Nota (ejercicio avanzado): pensar el caso de añadir datos de un array de tareas de tamaño indeterminado (los datos ya están dentro del array)
+["comprar","barrer","alimentar gato","colada"]/
 
-  function hacerLista(){
-	const contenedor = document.getElementById("div1");
-	const lista = document.createElement("ul")
-	const elemento =document.createElement("li")
-	const elementoDos =document.createElement("li")
-	const node = document.createTextNode("Patatas");
-	const nodeDos = document.createTextNode("Naranjas");
-
-
-	contenedor.appendChild(lista)
-	lista.appendChild(elemento);
-	lista.appendChild(elementoDos);
-	elemento.appendChild(node);
-	elementoDos.appendChild(nodeDos);
+let array = ["comprar","barrer","alimentar gato","colada"];
+let lista2 = document.getElementById("lista2")
+for (let i = 0; i<array.length; i++){
+    lista2.appendChild(document.createElement("li"))
 }
 
-document.getElementById("crear").addEventListener("click", hacerLista)
-
-
+let opcionesLista2 = lista2.getElementsByTagName("li")
+for (let i = 0; i<array.length; i++){
+    let node = document.createTextNode(array[i])
+    opcionesLista2[i].appendChild(node)
+}
